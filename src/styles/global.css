@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+
+  --color-background: #050505;
+  --color-surface: #0e0e0e;
+  --color-surface-elevated: #161616;
+  --color-card: #191919;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a3a3a3;
+  --color-text-muted: #737373;
+  --color-accent: #b11226;
+  --color-accent-hover: #c91834;
+  --color-accent-active: #8e1020;
+  --color-glass: rgba(255, 255, 255, 0.08);
+  --color-glass-border: rgba(255, 255, 255, 0.12);
+  --color-hairline: rgba(255, 255, 255, 0.06);
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-pill: 999rem;
+
+  --shadow-soft: 0 18px 60px rgba(0, 0, 0, 0.28);
+  --shadow-medium: 0 24px 80px rgba(0, 0, 0, 0.38);
+  --shadow-large: 0 32px 120px rgba(0, 0, 0, 0.48);
+  --shadow-glass: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 24px 80px rgba(0, 0, 0, 0.34);
+  --shadow-glow-crimson: 0 18px 70px rgba(177, 18, 38, 0.34);
+  --shadow-glow-white: 0 18px 70px rgba(255, 255, 255, 0.16);
+  --shadow-hover: 0 26px 90px rgba(0, 0, 0, 0.48);
+}
+
+:root {
+  color-scheme: dark;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-10: 5rem;
+  --space-12: 6rem;
+  --container-sm: 48rem;
+  --container-md: 64rem;
+  --container-lg: 80rem;
+  --container-xl: 90rem;
+  --section-space-mobile: 5rem;
+  --section-space-tablet: 7rem;
+  --section-space-desktop: 9rem;
+  --duration-fast: 160ms;
+  --duration-medium: 280ms;
+  --duration-slow: 560ms;
+  --duration-extra-slow: 900ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-background);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.08), transparent 34rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 28rem),
+    var(--color-background);
+  font-family: var(--font-sans);
+  text-rendering: geometricprecision;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+img,
+picture,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+@utility typography-display-xl {
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  line-height: 0.88;
+}
+
+@utility typography-display-l {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  line-height: 0.9;
+}
+
+@utility typography-display-m {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 750;
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+@utility typography-heading-xl {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 750;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+@utility typography-heading-l {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+}
+
+@utility typography-heading-m {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+@utility typography-heading-s {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+@utility typography-body-large {
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.75;
+}
+
+@utility typography-body {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.7;
+}
+
+@utility typography-body-small {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 1.6;
+}
+
+@utility typography-caption {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+}
+
+@utility typography-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@utility typography-button {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1;
+}
+
+@utility typography-navigation {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+@utility font-accent {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+@utility glass-surface {
+  border: 1px solid var(--color-glass-border);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.035));
+  box-shadow: var(--shadow-glass);
+  backdrop-filter: blur(24px) saturate(150%);
+}
+
+@utility glass-subtle {
+  border: 1px solid var(--color-hairline);
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(16px) saturate(130%);
+}
+
+@utility glass-elevated {
+  border: 1px solid var(--color-glass-border);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045));
+  box-shadow: var(--shadow-large);
+  backdrop-filter: blur(32px) saturate(160%);
+}
+
+@utility interaction-premium {
+  transition-duration: var(--duration-medium);
+  transition-property: color, background-color, border-color, opacity, box-shadow, transform, filter;
+  transition-timing-function: var(--ease-smooth);
+}
+
+@utility focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 4px;
+}
+
+@utility focus-ring-visible {
+  outline-color: var(--color-accent-hover);
+}
+
+@utility scale-lift {
+  transform: translate3d(0, -2px, 0) scale(1.01);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
